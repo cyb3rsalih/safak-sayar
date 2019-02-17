@@ -7,7 +7,9 @@
     "test": "jest"
   },
   "dependencies": {
+    "moment": "^2.24.0",
     "react": "16.6.3",
+    "react-moment": "^0.8.4",
     "react-native": "0.58.4",
     "react-native-gesture-handler": "^1.0.15",
     "react-native-popup-menu": "^0.15.0",

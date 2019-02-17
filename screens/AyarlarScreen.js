@@ -5,9 +5,9 @@ import {
     MenuOptions,
     MenuOption,
     MenuTrigger,
-  } from 'react-native-popup-menu'
-
-class AyarlarScreen extends React.Component {
+  } from 'react-native-popup-menu';
+  import Moment from 'react-moment';
+  class AyarlarScreen extends React.Component {
     constructor(){
         super()
 
@@ -15,6 +15,7 @@ class AyarlarScreen extends React.Component {
             bugun: new Date(),
             adSoyad:'',
             baslamaTarihi:'',
+            baslamaTarihiHesap:0,
             askerlikTipi:'',
             ceza:'',
             izin:'',
@@ -39,7 +40,7 @@ class AyarlarScreen extends React.Component {
                     askerlikTipi:resultObj.askerlikTipi,
                     ceza:resultObj.ceza,
                     izin:resultObj.izin,
-                },() =>  alert("Hosgeldiniz beyfendi"))
+                })
             }
                          
         } )
@@ -53,7 +54,10 @@ class AyarlarScreen extends React.Component {
               date: new Date()
             });
             if (action !== DatePickerAndroid.dismissedAction) {
-              this.setState({baslamaTarihi:`${year}-${month}-${day}`})
+            baslamaTarihi = new Date(year,month,day)
+            //today = new Date()
+            this.setState({baslamaTarihi:baslamaTarihi.toDateString(),baslamaTarihiHesap:baslamaTarihi.getTime()},() => alert(this.state.baslamaTarihiHesap))
+            // TİME DİFFF alert(parseInt((today.getTime() - selectedDate.getTime())/86400000).toString())
             }
           } catch ({code, message}) {
             console.warn('Cannot open date picker', message);
